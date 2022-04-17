@@ -87,7 +87,7 @@ button:hover {
         align-items: center;
         margin: 1vh;
         padding: 0 20vw;
-        font-size: 36px;
+        font-size: 30px;
     }
 
     .k-row {
@@ -112,6 +112,11 @@ button:hover {
     #controls,
     #title {
         margin: 5px;
+
+    }
+
+    #title {
+        font-size: 30px;
     }
 
     #delete {
