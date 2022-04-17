@@ -3,6 +3,7 @@
 const x = null;
 let steps = 0;
 let keypadInput = 0;
+
 function solve(board) {
     if (solved(board)) {
         return board;
@@ -11,6 +12,7 @@ function solve(board) {
     const validBoards = keepOnlyValid(possibilities);
     return searchForSolution(validBoards);
 }
+
 function searchForSolution(boards) {
     // backtracking search for solution
     const first = boards.shift();
@@ -20,14 +22,14 @@ function searchForSolution(boards) {
         if (tryPath) {
             // tryPath is valid and good
             return tryPath;
-        }
-        else {
+        } else {
             // path is a dead end, search for solution for remaining boards
             return searchForSolution(boards);
         }
     }
     return false;
 }
+
 function solved(board) {
     // every cell is not empty and valid
     for (let i = 0; i < 9; i++) {
@@ -39,6 +41,7 @@ function solved(board) {
     }
     return true;
 }
+
 function nextBoards(board) {
     const res = [];
     const firstEmpty = findEmptySquare(board);
@@ -55,6 +58,7 @@ function nextBoards(board) {
     }
     return res;
 }
+
 function findEmptySquare(board) {
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
@@ -65,12 +69,15 @@ function findEmptySquare(board) {
     }
     return null;
 }
+
 function keepOnlyValid(boards) {
     return boards.filter(board => validBoard(board));
 }
+
 function validBoard(board) {
     return rowsValid(board) && columnsValid(board) && blocksValid(board);
 }
+
 function rowsValid(board) {
     for (let i = 0; i < 9; i++) {
         const duplicates = [];
@@ -86,6 +93,7 @@ function rowsValid(board) {
     }
     return true;
 }
+
 function columnsValid(board) {
     for (let i = 0; i < 9; i++) {
         const duplicates = [];
@@ -101,11 +109,18 @@ function columnsValid(board) {
     }
     return true;
 }
+
 function blocksValid(board) {
     const boxCoordinates = [
-        [0, 0], [0, 1], [0, 2],
-        [1, 0], [1, 1], [1, 2],
-        [2, 0], [2, 1], [2, 2]
+        [0, 0],
+        [0, 1],
+        [0, 2],
+        [1, 0],
+        [1, 1],
+        [1, 2],
+        [2, 0],
+        [2, 1],
+        [2, 2]
     ];
     for (let y = 0; y < 9; y += 3) {
         for (let x = 0; x < 9; x += 3) {
@@ -133,7 +148,9 @@ for (let i = 0; i < 9; i++) {
         currentBoard[i].push(x);
     }
 }
-Object.assign(window, { currentBoard });
+Object.assign(window, {
+    currentBoard
+});
 const solveButton = document.querySelector('#solve');
 const allCells = document.querySelectorAll('.cell');
 if (solveButton) {
@@ -168,6 +185,7 @@ const validInput = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 if (allCells) {
     allCells.forEach(cell => {
         cell.addEventListener('click', () => {
+
             allCells.forEach(cell => {
                 cell.classList.remove('active');
             });
@@ -185,8 +203,7 @@ if (allCells) {
                                     cell.classList.remove('inputCell');
                                     cell.textContent = '';
                                     currentBoard[rowIndex][colIndex] = null;
-                                }
-                                else {
+                                } else {
                                     keypadInput = +keypadValue;
                                     cell.classList.add('inputCell');
                                     cell.textContent = keypadValue;
@@ -195,7 +212,9 @@ if (allCells) {
                                 cell.classList.remove('active');
                             }
                         }
-                    }, { once: true });
+                    }, {
+                        once: true
+                    });
                 });
             }
             document.addEventListener('keydown', (pressed) => {
@@ -204,8 +223,7 @@ if (allCells) {
                         cell.textContent = '';
                         currentBoard[rowIndex][colIndex] = null;
                         cell.classList.remove('inputCell');
-                    }
-                    else if (validInput.includes(+pressed.key)) {
+                    } else if (validInput.includes(+pressed.key)) {
                         // update display in browser
                         cell.textContent = pressed.key;
                         // update currentBoard
@@ -215,7 +233,9 @@ if (allCells) {
                     }
                     cell.classList.remove('active');
                 }
-            }, { once: true });
+            }, {
+                once: true
+            });
         });
     });
 }

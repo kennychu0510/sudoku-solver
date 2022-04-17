@@ -1,7 +1,7 @@
 #sudoku-board {
     border: 3px solid black;
     aspect-ratio: 1/1;
-    height: max(80vh, 400px);
+    height: max(70vh, 400px);
     margin: auto;
     display: grid;
     grid-template-rows: repeat(9, 1fr);
@@ -68,9 +68,30 @@ button:hover {
 
 #keypad {
     display: none;
+    margin: 0 1vw;
+    justify-content: center;
 }
 
-@media only screen and (max-width: 500px) {
+.k-row {
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+}
+
+.k-num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+    width: 50px;
+    height: 50px;
+    font-size: 36px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0 1vw;
+}
+
+@media only screen and (max-width: 810px) {
     #sudoku-board {
         width: 90vw;
         height: 90vw;
@@ -82,45 +103,21 @@ button:hover {
 
     #keypad {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 1vh;
-        padding: 0 20vw;
-        font-size: 30px;
-    }
-
-    .k-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin: 5px;
-
-    }
-
-    .k-num {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: lightblue;
-        width: 36px;
-        border: 1px solid black;
-        border-radius: 5px;
     }
 
     #controls,
     #title {
         margin: 5px;
-
     }
 
     #title {
         font-size: 30px;
     }
 
-    #delete {
-        margin-top: 5px;
-    }
+}
 
+@media only screen and (max-width: 500px) {
+    #keypad {
+        display: block;
+    }
 }
