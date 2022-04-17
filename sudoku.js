@@ -181,15 +181,16 @@ if (allCells) {
                         let keypadValue = keypadNumber.textContent;
                         if (keypadValue) {
                             if (cell.classList.contains('active')) {
-                                keypadInput = +keypadValue;
-                                // console.log("keypad pressed: ", keypadInput)
-                                cell.textContent = `${keypadInput}`;
-                                currentBoard[rowIndex][colIndex] = keypadInput;
-                                if (keypadInput === 0) {
+                                if (keypadValue === 'X') {
                                     cell.classList.remove('inputCell');
+                                    cell.textContent = '';
+                                    currentBoard[rowIndex][colIndex] = null;
                                 }
                                 else {
+                                    keypadInput = +keypadValue;
                                     cell.classList.add('inputCell');
+                                    cell.textContent = keypadValue;
+                                    currentBoard[rowIndex][colIndex] = keypadInput;
                                 }
                                 cell.classList.remove('active');
                             }
