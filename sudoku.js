@@ -173,6 +173,13 @@ if (solveButton) {
             console.log('solved');
             console.log("time took to solve: ", (endTime - startTime) / 1000, ' sec');
             console.log("steps took: ", steps);
+            document.querySelector('.text1').textContent = 'solved in '
+            document.querySelector('.text2').textContent = ' seconds in'
+            document.querySelector('.text3').textContent = ' steps'
+            document.querySelector('.seconds').textContent = (endTime - startTime) / 1000
+            document.querySelector('.steps').textContent = steps
+            // const stats = `solved in ${(endTime - startTime) / 1000} seconds with ${steps} steps`
+            // document.querySelector('#stats').textContent = stats
             return;
         }
         console.log("steps took: ", steps);

@@ -91,6 +91,12 @@ button:hover {
     margin: 0 1vw;
 }
 
+.seconds,
+.steps {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 @media only screen and (max-width: 810px) {
     #sudoku-board {
         width: 90vw;
@@ -120,4 +126,10 @@ button:hover {
     #keypad {
         display: block;
     }
+}
+
+#stats {
+    display: flex;
+    justify-content: center;
+    margin: 2vh;
 }
